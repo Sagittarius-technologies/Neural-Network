@@ -1,0 +1,27 @@
+[2025-09-21 18:05:07] received training job
+[2025-09-21 18:05:07] training started
+[2025-09-21 18:05:07] running: C:\Users\HP\anaconda3\python.exe C:\MY FOLDER\Hackathon\Smart India Hackathon - 2025\Project\deep-sea-edna-ai\Clustering NN\clust_nn_pipeline_sklearn.py --train_fasta C:\MY FOLDER\Hackathon\Smart India Hackathon - 2025\Project\deep-sea-edna-ai\Clustering NN\backend\runs\37b197f8-1cbe-4cb3-b20f-6c9bdafa568e\train.fasta --outdir C:\MY FOLDER\Hackathon\Smart India Hackathon - 2025\Project\deep-sea-edna-ai\Clustering NN\backend\runs\37b197f8-1cbe-4cb3-b20f-6c9bdafa568e --k 4 --pca 50 --epochs 30 --centroid_percentile 95.0
+[2025-09-21 18:05:14] Training MLP from labeled FASTA...
+[2025-09-21 18:05:14] 
+[2025-09-21 18:05:14] Vectorizing (k-mer):   0%|          | 0/2 [00:00<?, ?it/s]
+[2025-09-21 18:05:14] Vectorizing (k-mer): 100%|##########| 2/2 [00:00<?, ?it/s]
+[2025-09-21 18:05:14] Warning: following classes have <2 samples and will be removed: [np.int64(1), np.int64(0)]
+[2025-09-21 18:05:14] Traceback (most recent call last):
+[2025-09-21 18:05:14]   File "C:\MY FOLDER\Hackathon\Smart India Hackathon - 2025\Project\deep-sea-edna-ai\Clustering NN\clust_nn_pipeline_sklearn.py", line 409, in <module>
+[2025-09-21 18:05:14]     main()
+[2025-09-21 18:05:14]   File "C:\MY FOLDER\Hackathon\Smart India Hackathon - 2025\Project\deep-sea-edna-ai\Clustering NN\clust_nn_pipeline_sklearn.py", line 379, in main
+[2025-09-21 18:05:14]     model_path = train_from_labeled_fasta(args.train_fasta, outdir, k=args.k, pca_comp=args.pca, epochs=args.epochs, centroid_percentile=args.centroid_percentile)
+[2025-09-21 18:05:14]                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-09-21 18:05:14]   File "C:\MY FOLDER\Hackathon\Smart India Hackathon - 2025\Project\deep-sea-edna-ai\Clustering NN\clust_nn_pipeline_sklearn.py", line 184, in train_from_labeled_fasta
+[2025-09-21 18:05:14]     X_train, X_test, y_train, y_test = train_test_split(Xr_s, y, test_size=0.2, random_state=42, stratify=y)
+[2025-09-21 18:05:14]                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-09-21 18:05:14]   File "C:\Users\HP\anaconda3\Lib\site-packages\sklearn\utils\_param_validation.py", line 218, in wrapper
+[2025-09-21 18:05:14]     return func(*args, **kwargs)
+[2025-09-21 18:05:14]            ^^^^^^^^^^^^^^^^^^^^^
+[2025-09-21 18:05:14]   File "C:\Users\HP\anaconda3\Lib\site-packages\sklearn\model_selection\_split.py", line 2919, in train_test_split
+[2025-09-21 18:05:14]     n_train, n_test = _validate_shuffle_split(
+[2025-09-21 18:05:14]                       ^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-09-21 18:05:14]   File "C:\Users\HP\anaconda3\Lib\site-packages\sklearn\model_selection\_split.py", line 2499, in _validate_shuffle_split
+[2025-09-21 18:05:14]     raise ValueError(
+[2025-09-21 18:05:14] ValueError: With n_samples=0, test_size=0.2 and train_size=None, the resulting train set will be empty. Adjust any of the aforementioned parameters.
+[2025-09-21 18:05:14] training failed with return code 1

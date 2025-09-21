@@ -1,0 +1,7 @@
+cluster,medoid_index,medoid_id,predicted_species,confidence,top_probs,top_labels
+0,2,XR_006759579.1,Salmo_salar,0.999915361404419,"[(np.int64(7), 0.999915361404419), (np.int64(6), 2.2465770598500967e-05), (np.int64(0), 1.853177855082322e-05)]","[np.str_('Salmo_salar'), np.str_('Orcinus_orca'), np.str_('Asterias_rubens')]"
+1,5,XR_006756869.1,Salmo_salar,0.9996684789657593,"[(np.int64(7), 0.9996684789657593), (np.int64(6), 0.0001265590253751725), (np.int64(3), 6.914766709087417e-05)]","[np.str_('Salmo_salar'), np.str_('Orcinus_orca'), np.str_('Delphinus_delphis')]"
+2,0,XR_006759914.1,Salmo_salar,0.9985529780387878,"[(np.int64(7), 0.9985529780387878), (np.int64(3), 0.00037514520226977766), (np.int64(4), 0.00025621356326155365)]","[np.str_('Salmo_salar'), np.str_('Delphinus_delphis'), np.str_('Mytilus_edulis')]"
+3,3,XR_006759069.1,Salmo_salar,0.999125063419342,"[(np.int64(7), 0.999125063419342), (np.int64(3), 0.0002592155651655048), (np.int64(4), 0.00021050054056104273)]","[np.str_('Salmo_salar'), np.str_('Delphinus_delphis'), np.str_('Mytilus_edulis')]"
+4,4,XR_006757478.1,Salmo_salar,0.9995726943016052,"[(np.int64(7), 0.9995726943016052), (np.int64(6), 0.00011478707165224478), (np.int64(3), 0.00010651339107425883)]","[np.str_('Salmo_salar'), np.str_('Orcinus_orca'), np.str_('Delphinus_delphis')]"
+5,1,XR_006760234.1,Salmo_salar,0.9988698363304138,"[(np.int64(7), 0.9988698363304138), (np.int64(4), 0.000364472420187667), (np.int64(3), 0.000223599374294281)]","[np.str_('Salmo_salar'), np.str_('Mytilus_edulis'), np.str_('Delphinus_delphis')]"

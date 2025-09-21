@@ -1,0 +1,22 @@
+# create a fresh environment with Python 3.10 (very compatible with TF)
+conda create -n edna-pipeline python=3.10 -y
+conda activate edna-pipeline
+
+# Install lightweight packages with conda where possible for speed
+conda install -y -c conda-forge biopython numpy pandas scikit-learn tqdm joblib matplotlib seaborn
+
+# Install TensorFlow (CPU) and tf/keras via pip (conda-forge TF is older)
+pip install "tensorflow==2.11.0"    # CPU build compatible with py3.10
+
+# Verify installs quickly:
+python - <<'PY'
+import sys
+import numpy, pandas, sklearn, Bio
+import tensorflow as tf
+print("python", sys.version.split()[0])
+print("numpy", numpy.__version__)
+print("pandas", pandas.__version__)
+print("sklearn", sklearn.__version__)
+print("biopython", Bio.__version__)
+print("tensorflow", tf.__version__)
+PY

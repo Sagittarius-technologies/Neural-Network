@@ -1,0 +1,15 @@
+{
+    "run_id": "train_fa0f6556-f9db-4614-9629-ea1579d2153d",
+    "status": "failed",
+    "start_time": "2025-09-21T12:48:24.419993Z",
+    "end_time": "2025-09-21T12:48:24.423638Z",
+    "error": "AttributeError: module 'pipeline_api' has no attribute 'train_from_labeled_fasta'",
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "epochs": 50,
+        "centroid_percentile": 95.0,
+        "filename": "train_test.fasta"
+    },
+    "job_type": "training"
+}

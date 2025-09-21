@@ -1,0 +1,15 @@
+{
+    "run_id": "train_b8a0b490-0374-4489-b494-409847f44402",
+    "status": "failed",
+    "start_time": "2025-09-21T12:55:39.752060Z",
+    "end_time": "2025-09-21T12:55:39.770225Z",
+    "error": "ValueError: With n_samples=0, test_size=0.2 and train_size=None, the resulting train set will be empty. Adjust any of the aforementioned parameters.",
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "epochs": 50,
+        "centroid_percentile": 95.0,
+        "filename": "train_test.fasta"
+    },
+    "job_type": "training"
+}

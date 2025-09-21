@@ -1,0 +1,15 @@
+# to run the neural network
+
+python clust_nn_pipeline_sklearn.py --train_fasta sequences_clean.fasta --outdir model_output --k 4 --pca 50 --epochs 50
+
+Delete the folder:
+Remove-Item -LiteralPath ".\model_output" -Recurse -Force
+
+Retrain (recreates artifacts):
+
+python .\clust_nn_pipeline_sklearn.py --train_fasta sequences_clean.fasta --outdir model_output --k 4 --pca 50 --epochs 50
+
+
+Run prediction (after training or if artifacts exist):
+python .\clust_nn_pipeline_sklearn.py --raw_fasta raw_sequences.fasta --outdir model_output --k 4 --pca 50 --cluster_method kmeans --kmeans_n 6 --threshold 0.7
+
