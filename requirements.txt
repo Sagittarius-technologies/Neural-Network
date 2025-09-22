@@ -6,3 +6,5 @@ tqdm
 joblib
 matplotlib
 seaborn
+fastapi
+uvicorn[standard]
