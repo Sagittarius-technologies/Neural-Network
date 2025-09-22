@@ -1,0 +1,19 @@
+{
+    "run_id": "predict_7c5cf1f4-658d-4d8a-9b57-5e69e0d1f8cf",
+    "status": "completed",
+    "start_time": "2025-09-21T17:12:09.123001Z",
+    "end_time": "2025-09-21T17:12:12.177355Z",
+    "error": "",
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "cluster_method": "kmeans",
+        "kmeans_n": 1,
+        "threshold": 0.7,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "filename": "db_ecoli.fasta"
+    },
+    "job_type": "prediction",
+    "model_run_id": "train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164"
+}

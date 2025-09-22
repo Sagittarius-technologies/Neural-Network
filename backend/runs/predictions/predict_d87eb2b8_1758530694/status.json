@@ -1,0 +1,33 @@
+{
+    "run_id": "predict_d87eb2b8_1758530694",
+    "status": "completed",
+    "start_time": 1758530695.0681252,
+    "end_time": 1758530706.3517396,
+    "error": null,
+    "parameters": {
+        "cluster_method": "kmeans",
+        "kmeans_n": 6,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "threshold": 0.7,
+        "model_run_id": "train_d6d0ab14_1758514958",
+        "filename": "Atlantic Salmon.fasta"
+    },
+    "job_type": "prediction",
+    "outputs": [
+        "Atlantic Salmon.fasta",
+        "cluster_medoid_predictions.csv",
+        "cluster_scatter.png",
+        "sequence_cluster_assignments.csv",
+        "species_abundance_bar.png",
+        "species_abundance_by_clusters.csv",
+        "species_abundance_by_reads.csv",
+        "species_composition_pie.png",
+        "status.json"
+    ],
+    "results_info": {
+        "total_sequences": 6,
+        "num_clusters": 6,
+        "medoids_found": 6
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "run_id": "predict_d558d289_1758524860",
+    "status": "completed",
+    "start_time": 1758524860.5624208,
+    "end_time": 1758524865.1192496,
+    "error": null,
+    "parameters": {
+        "cluster_method": "kmeans",
+        "kmeans_n": 10,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "threshold": 0.7,
+        "model_run_id": "train_d6d0ab14_1758514958",
+        "filename": "mixed_raw.fasta"
+    },
+    "job_type": "prediction",
+    "outputs": [
+        "cluster_medoid_predictions.csv",
+        "cluster_scatter.png",
+        "mixed_raw.fasta",
+        "sequence_cluster_assignments.csv",
+        "species_abundance_bar.png",
+        "species_abundance_by_clusters.csv",
+        "species_abundance_by_reads.csv",
+        "species_composition_pie.png",
+        "status.json"
+    ],
+    "results_info": {
+        "total_sequences": 27,
+        "num_clusters": 10,
+        "medoids_found": 10
+    }
+}

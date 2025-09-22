@@ -1,0 +1,19 @@
+{
+    "run_id": "predict_4d92910e-2f1f-46c1-b1f2-3c26adb44ab8",
+    "status": "completed",
+    "start_time": "2025-09-21T17:11:45.304410Z",
+    "end_time": "2025-09-21T17:11:48.321682Z",
+    "error": "",
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "cluster_method": "kmeans",
+        "kmeans_n": 5,
+        "threshold": 0.7,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "filename": "Killer_Whale.fasta"
+    },
+    "job_type": "prediction",
+    "model_run_id": "train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164"
+}

@@ -1,0 +1,22 @@
+{
+    "run_id": "predict_3f7864c9_1758515986",
+    "status": "completed",
+    "start_time": 1758515986.2659075,
+    "end_time": 1758515990.072499,
+    "error": null,
+    "parameters": {
+        "cluster_method": "kmeans",
+        "kmeans_n": 2,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "threshold": 0.7,
+        "model_run_id": "train_d6d0ab14_1758514958",
+        "filename": "Antarctic_Krill.fasta"
+    },
+    "job_type": "prediction",
+    "results_info": {
+        "total_sequences": 2,
+        "num_clusters": 2,
+        "medoids_found": 2
+    }
+}

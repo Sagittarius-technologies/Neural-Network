@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\main.py", line 107, in job_runner
+    yield
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\main.py", line 195, in run_prediction_task
+    results = func(
+        raw_fasta=fasta_path,
+    ...<8 lines>...
+        threshold=params.get("threshold", 0.7),
+    )
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\pipeline.py", line 196, in cluster_and_predict
+    vec = joblib.load(os.path.join(model_dir, "kmer_vectorizer.joblib"))
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 735, in load
+    with open(filename, "rb") as f:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\admin\\Documents\\Oceanography-backend\\Neural-Network\\backend\\runs\\models\\train_fa0f6556-f9db-4614-9629-ea1579d2153d\\kmer_vectorizer.joblib'

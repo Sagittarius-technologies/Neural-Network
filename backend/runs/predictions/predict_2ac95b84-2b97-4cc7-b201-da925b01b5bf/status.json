@@ -1,0 +1,19 @@
+{
+    "run_id": "predict_2ac95b84-2b97-4cc7-b201-da925b01b5bf",
+    "status": "failed",
+    "start_time": "2025-09-21T15:50:33.346982Z",
+    "end_time": "2025-09-21T15:50:33.796214Z",
+    "error": "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\admin\\\\Documents\\\\Oceanography-backend\\\\Neural-Network\\\\backend\\\\runs\\\\models\\\\train_fa0f6556-f9db-4614-9629-ea1579d2153d\\\\kmer_vectorizer.joblib' | see error.log",
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "cluster_method": "kmeans",
+        "kmeans_n": 10,
+        "threshold": 0.7,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "filename": "mixed_raw.fasta"
+    },
+    "job_type": "prediction",
+    "model_run_id": "train_fa0f6556-f9db-4614-9629-ea1579d2153d"
+}

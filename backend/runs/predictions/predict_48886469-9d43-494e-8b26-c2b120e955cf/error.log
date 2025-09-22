@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\main.py", line 121, in job_runner
+    yield
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\main.py", line 265, in run_prediction_task
+    results = func(
+        raw_fasta=fasta_path,
+    ...<8 lines>...
+        threshold=params.get("threshold", 0.7),
+    )
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\pipeline.py", line 210, in cluster_and_predict
+    labels = cluster_kmeans(Xr_s, n_clusters=kmeans_n)
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\pipeline.py", line 96, in cluster_kmeans
+    labels = km.fit_predict(Xr)
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\cluster\_kmeans.py", line 1064, in fit_predict
+    return self.fit(X, sample_weight=sample_weight).labels_
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\cluster\_kmeans.py", line 1464, in fit
+    self._check_params_vs_input(X)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\cluster\_kmeans.py", line 1404, in _check_params_vs_input
+    super()._check_params_vs_input(X, default_n_init=10)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\cluster\_kmeans.py", line 871, in _check_params_vs_input
+    raise ValueError(
+        f"n_samples={X.shape[0]} should be >= n_clusters={self.n_clusters}."
+    )
+ValueError: n_samples=2 should be >= n_clusters=10.

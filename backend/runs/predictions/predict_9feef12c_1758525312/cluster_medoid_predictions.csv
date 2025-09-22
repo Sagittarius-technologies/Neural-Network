@@ -1,0 +1,11 @@
+cluster,medoid_index,medoid_id,predicted_species,confidence,top_probs,top_labels
+0,20,KC429331.1,Unknown,0.6835169196128845,Mytilus_edulis (0.684); Crassostrea_gigas (0.129); Salmo_salar (0.079),"Mytilus_edulis, Crassostrea_gigas, Salmo_salar"
+1,1,XR_006759914.1,Unknown,0.49365347623825073,Salmo_salar (0.494); Crassostrea_gigas (0.116); Oncorhynchus_mykiss (0.087),"Salmo_salar, Crassostrea_gigas, Oncorhynchus_mykiss"
+2,17,EF035090.1,Unknown,0.3220658004283905,Salmo_salar (0.322); Oncorhynchus_mykiss (0.270); Crassostrea_gigas (0.247),"Salmo_salar, Oncorhynchus_mykiss, Crassostrea_gigas"
+3,21,DQ640512.1,Unknown,0.6773021817207336,Mytilus_edulis (0.677); Salmo_salar (0.115); Crassostrea_gigas (0.108),"Mytilus_edulis, Salmo_salar, Crassostrea_gigas"
+4,12,FJ710886.1,Salmo_salar,0.9216600656509399,Salmo_salar (0.922); Crassostrea_gigas (0.034); Mytilus_edulis (0.017),"Salmo_salar, Crassostrea_gigas, Mytilus_edulis"
+5,10,HQ260441.1,Salmo_salar,0.8452669382095337,Salmo_salar (0.845); Crassostrea_gigas (0.035); Oncorhynchus_mykiss (0.033),"Salmo_salar, Crassostrea_gigas, Oncorhynchus_mykiss"
+6,15,L78854.1,Mytilus_edulis,0.8438116312026978,Mytilus_edulis (0.844); Salmo_salar (0.080); Oncorhynchus_mykiss (0.028),"Mytilus_edulis, Salmo_salar, Oncorhynchus_mykiss"
+7,18,AY695798.2,Unknown,0.606378436088562,Crassostrea_gigas (0.606); Oncorhynchus_mykiss (0.201); Salmo_salar (0.124),"Crassostrea_gigas, Oncorhynchus_mykiss, Salmo_salar"
+8,19,KJ193842.1,Mytilus_edulis,0.8086601495742798,Mytilus_edulis (0.809); Salmo_salar (0.094); Oncorhynchus_mykiss (0.032),"Mytilus_edulis, Salmo_salar, Oncorhynchus_mykiss"
+9,16,EF035091.1,Unknown,0.6591517925262451,Crassostrea_gigas (0.659); Salmo_salar (0.123); Mytilus_edulis (0.070),"Crassostrea_gigas, Salmo_salar, Mytilus_edulis"

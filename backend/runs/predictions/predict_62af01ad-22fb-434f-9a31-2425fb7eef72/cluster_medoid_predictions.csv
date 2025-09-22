@@ -1,0 +1,3 @@
+cluster,medoid_index,medoid_id,predicted_species,confidence
+0,0,KJ193800.1,Unknown,0.9999756813049316
+1,1,DQ079743.1,Unknown,0.8520767688751221

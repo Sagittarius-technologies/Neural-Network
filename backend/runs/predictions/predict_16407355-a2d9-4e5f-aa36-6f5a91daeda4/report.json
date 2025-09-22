@@ -1,0 +1,73 @@
+{
+    "status": "completed",
+    "medoid_predictions": [
+        {
+            "cluster": 0,
+            "medoid_index": 0,
+            "medoid_id": "KJ193800.1",
+            "predicted_species": "Unknown",
+            "confidence": 0.0,
+            "top3": [
+                {
+                    "label": "Oncorhynchus_mykiss",
+                    "prob": 0.9999756813049316
+                },
+                {
+                    "label": "Crassostrea_gigas",
+                    "prob": 2.432890141790267e-05
+                },
+                {
+                    "label": "Thunnus_albacares",
+                    "prob": 3.660474354183485e-11
+                }
+            ]
+        },
+        {
+            "cluster": 1,
+            "medoid_index": 1,
+            "medoid_id": "DQ079743.1",
+            "predicted_species": "Unknown",
+            "confidence": 0.0,
+            "top3": [
+                {
+                    "label": "Crassostrea_gigas",
+                    "prob": 0.8520767688751221
+                },
+                {
+                    "label": "Oncorhynchus_mykiss",
+                    "prob": 0.12043814361095428
+                },
+                {
+                    "label": "Thunnus_albacares",
+                    "prob": 0.012760289013385773
+                }
+            ]
+        }
+    ],
+    "sequence_assignments": [
+        {
+            "sequence_id": "KJ193800.1",
+            "cluster": 0,
+            "predicted_species": "Unknown",
+            "confidence": 0.0
+        },
+        {
+            "sequence_id": "DQ079743.1",
+            "cluster": 1,
+            "predicted_species": "Unknown",
+            "confidence": 0.0
+        }
+    ],
+    "report": {
+        "total_sequences": 2,
+        "clusters_found": 2,
+        "unclustered_sequences": 0,
+        "composition": [
+            {
+                "predicted_species": "Unknown",
+                "n_reads": 2,
+                "percentage": 100.0
+            }
+        ]
+    }
+}

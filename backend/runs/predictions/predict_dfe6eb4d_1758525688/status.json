@@ -1,0 +1,33 @@
+{
+    "run_id": "predict_dfe6eb4d_1758525688",
+    "status": "completed",
+    "start_time": 1758525689.0437179,
+    "end_time": 1758525698.1723695,
+    "error": null,
+    "parameters": {
+        "cluster_method": "kmeans",
+        "kmeans_n": 3,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "threshold": 0.7,
+        "model_run_id": "train_d6d0ab14_1758514958",
+        "filename": "Common_Dolphin.fasta"
+    },
+    "job_type": "prediction",
+    "outputs": [
+        "cluster_medoid_predictions.csv",
+        "cluster_scatter.png",
+        "Common_Dolphin.fasta",
+        "sequence_cluster_assignments.csv",
+        "species_abundance_bar.png",
+        "species_abundance_by_clusters.csv",
+        "species_abundance_by_reads.csv",
+        "species_composition_pie.png",
+        "status.json"
+    ],
+    "results_info": {
+        "total_sequences": 3,
+        "num_clusters": 2,
+        "medoids_found": 2
+    }
+}

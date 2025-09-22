@@ -1,0 +1,3 @@
+cluster,medoid_index,medoid_id,predicted_species,confidence,top_probs,top_labels
+0,1,XR_009518183.1,Unknown,0.28193607926368713,Orcinus_orca (0.282); Delphinus_delphis (0.159); Salmo_salar (0.132),"Orcinus_orca, Delphinus_delphis, Salmo_salar"
+1,0,XR_009517937.1,Unknown,0.4380946457386017,Delphinus_delphis (0.438); Salmo_salar (0.209); Mytilus_edulis (0.110),"Delphinus_delphis, Salmo_salar, Mytilus_edulis"

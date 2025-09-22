@@ -1,0 +1,43 @@
+{
+    "status": "completed",
+    "report": {
+        "total_sequences": 2,
+        "clusters_found": 2,
+        "unclustered_sequences": 0,
+        "composition": [
+            {
+                "predicted_species": "Unknown",
+                "n_reads": 2,
+                "percentage": 100.0
+            }
+        ]
+    },
+    "medoid_predictions": [
+        {
+            "cluster": 0,
+            "medoid_index": 0,
+            "medoid_id": "KJ193800.1",
+            "predicted_species": "Unknown",
+            "confidence": 0.9999756813049316
+        },
+        {
+            "cluster": 1,
+            "medoid_index": 1,
+            "medoid_id": "DQ079743.1",
+            "predicted_species": "Unknown",
+            "confidence": 0.8520767688751221
+        }
+    ],
+    "sequence_assignments": [
+        {
+            "sequence_id": "KJ193800.1",
+            "cluster": 0,
+            "predicted_species": "Unknown"
+        },
+        {
+            "sequence_id": "DQ079743.1",
+            "cluster": 1,
+            "predicted_species": "Unknown"
+        }
+    ]
+}

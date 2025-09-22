@@ -1,0 +1,3 @@
+cluster,medoid_index,medoid_id,predicted_species,confidence,top_probs,top_labels
+0,0,KJ193800.1,Unknown,0.0,Oncorhynchus_mykiss (0.821); Crassostrea_gigas (0.165); Salmo_salar (0.014),"Oncorhynchus_mykiss, Crassostrea_gigas, Salmo_salar"
+1,1,DQ079743.1,Unknown,0.44184422492980957,Salmo_salar (0.442); Crassostrea_gigas (0.416); Oncorhynchus_mykiss (0.131),"Salmo_salar, Crassostrea_gigas, Oncorhynchus_mykiss"

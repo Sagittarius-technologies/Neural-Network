@@ -1,0 +1,19 @@
+{
+    "run_id": "predict_48c8a3e9-92e3-4c9d-853a-8d66a95e1c72",
+    "status": "completed",
+    "start_time": "2025-09-21T16:21:57.973832Z",
+    "end_time": "2025-09-21T16:22:02.591139Z",
+    "error": "",
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "cluster_method": "kmeans",
+        "kmeans_n": 10,
+        "threshold": 0.7,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "filename": "mixed_raw.fasta"
+    },
+    "job_type": "prediction",
+    "model_run_id": "train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164"
+}

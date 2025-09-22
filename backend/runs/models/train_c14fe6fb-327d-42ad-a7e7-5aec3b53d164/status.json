@@ -1,0 +1,15 @@
+{
+    "run_id": "train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164",
+    "status": "completed",
+    "start_time": "2025-09-21T15:40:03.323743Z",
+    "end_time": "2025-09-21T15:40:04.901054Z",
+    "error": "",
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "epochs": 50,
+        "centroid_percentile": 95.0,
+        "filename": "sequences_clean.fasta"
+    },
+    "job_type": "training"
+}

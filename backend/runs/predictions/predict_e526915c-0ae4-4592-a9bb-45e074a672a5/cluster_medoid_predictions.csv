@@ -1,0 +1,4 @@
+cluster,medoid_index,medoid_id,predicted_species,confidence
+0,0,AF346617.1,Asterias_rubens,0.999430239200592
+2,4,AF346613.1,Asterias_rubens,0.999430239200592
+3,3,AF346614.1,Unknown,0.9997623562812805

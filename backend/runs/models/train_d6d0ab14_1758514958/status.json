@@ -1,0 +1,16 @@
+{
+    "run_id": "train_d6d0ab14_1758514958",
+    "status": "completed",
+    "start_time": 1758514958.2052538,
+    "end_time": 1758514960.2286885,
+    "error": null,
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "epochs": 50,
+        "centroid_percentile": 95.0,
+        "filename": "sequences_clean.fasta"
+    },
+    "job_type": "training",
+    "model_path": "C:\\Users\\admin\\Documents\\Oceanography-backend\\Neural-Network\\backend\\runs\\models\\train_d6d0ab14_1758514958\\mlp_model.joblib"
+}

@@ -1,0 +1,3 @@
+cluster,medoid_index,medoid_id,predicted_species,confidence,top_probs,top_labels
+0,0,KJ193800.1,Unknown,0.0,"[(np.int64(5), 0.8209739923477173), (np.int64(2), 0.1647319793701172), (np.int64(7), 0.014217379502952099)]","[np.str_('Oncorhynchus_mykiss'), np.str_('Crassostrea_gigas'), np.str_('Salmo_salar')]"
+1,1,DQ079743.1,Unknown,0.44184422492980957,"[(np.int64(7), 0.44184422492980957), (np.int64(2), 0.4164842665195465), (np.int64(5), 0.13095663487911224)]","[np.str_('Salmo_salar'), np.str_('Crassostrea_gigas'), np.str_('Oncorhynchus_mykiss')]"

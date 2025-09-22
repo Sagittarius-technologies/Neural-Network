@@ -1,0 +1,19 @@
+{
+    "run_id": "predict_d4fb5772-4c82-473e-a654-1e45ddb4e647",
+    "status": "failed",
+    "start_time": "2025-09-21T16:42:42.594998Z",
+    "end_time": "2025-09-21T16:42:43.426245Z",
+    "error": "ValueError: n_samples=9 should be >= n_clusters=10. | see error.log",
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "cluster_method": "kmeans",
+        "kmeans_n": 10,
+        "threshold": 0.7,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "filename": "Bacillus subtilis.fasta"
+    },
+    "job_type": "prediction",
+    "model_run_id": "train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164"
+}

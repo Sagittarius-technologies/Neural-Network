@@ -1,0 +1,174 @@
+2025-09-21 21:20:33,330 [INFO] Placeholder model_run_id received; defaulting to latest model train_fa0f6556-f9db-4614-9629-ea1579d2153d
+2025-09-21 21:20:33,333 [WARNING] Model run train_fa0f6556-f9db-4614-9629-ea1579d2153d has no recognized artifacts. Found: ['input.fasta', 'status.json']
+2025-09-21 21:20:33,340 [INFO] Started prediction job predict_2ac95b84-2b97-4cc7-b201-da925b01b5bf (model: train_fa0f6556-f9db-4614-9629-ea1579d2153d)
+2025-09-21 21:20:33,348 [INFO] Calling pipeline.cluster_and_predict for run predict_2ac95b84-2b97-4cc7-b201-da925b01b5bf
+2025-09-21 21:20:33,785 [ERROR] Job predict_2ac95b84-2b97-4cc7-b201-da925b01b5bf failed: [Errno 2] No such file or directory: 'C:\\Users\\admin\\Documents\\Oceanography-backend\\Neural-Network\\backend\\runs\\models\\train_fa0f6556-f9db-4614-9629-ea1579d2153d\\kmer_vectorizer.joblib'
+Traceback (most recent call last):
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\main.py", line 107, in job_runner
+    yield
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\main.py", line 195, in run_prediction_task
+    results = func(
+        raw_fasta=fasta_path,
+    ...<8 lines>...
+        threshold=params.get("threshold", 0.7),
+    )
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\pipeline.py", line 196, in cluster_and_predict
+    vec = joblib.load(os.path.join(model_dir, "kmer_vectorizer.joblib"))
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\joblib\numpy_pickle.py", line 735, in load
+    with open(filename, "rb") as f:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\admin\\Documents\\Oceanography-backend\\Neural-Network\\backend\\runs\\models\\train_fa0f6556-f9db-4614-9629-ea1579d2153d\\kmer_vectorizer.joblib'
+2025-09-21 21:27:27,666 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 21:27:27,715 [INFO] Started prediction job predict_7b200c29-3bdf-4b1c-8074-6594c9fa8ea9 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 21:27:27,722 [INFO] Calling pipeline.cluster_and_predict for run predict_7b200c29-3bdf-4b1c-8074-6594c9fa8ea9
+2025-09-21 21:51:57,946 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 21:51:57,966 [INFO] Started prediction job predict_48c8a3e9-92e3-4c9d-853a-8d66a95e1c72 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 21:51:57,976 [INFO] Calling pipeline.cluster_and_predict for run predict_48c8a3e9-92e3-4c9d-853a-8d66a95e1c72
+2025-09-21 22:09:59,656 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:09:59,721 [INFO] Started prediction job predict_9132553e-366e-421d-8fc9-de3c54ab9ddc (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:09:59,767 [INFO] Calling pipeline.cluster_and_predict for run predict_9132553e-366e-421d-8fc9-de3c54ab9ddc
+2025-09-21 22:11:54,843 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:11:54,852 [INFO] Started prediction job predict_48886469-9d43-494e-8b26-c2b120e955cf (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:11:54,883 [INFO] Calling pipeline.cluster_and_predict for run predict_48886469-9d43-494e-8b26-c2b120e955cf
+2025-09-21 22:11:55,331 [ERROR] Job predict_48886469-9d43-494e-8b26-c2b120e955cf failed: n_samples=2 should be >= n_clusters=10.
+Traceback (most recent call last):
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\main.py", line 121, in job_runner
+    yield
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\main.py", line 265, in run_prediction_task
+    results = func(
+        raw_fasta=fasta_path,
+    ...<8 lines>...
+        threshold=params.get("threshold", 0.7),
+    )
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\pipeline.py", line 210, in cluster_and_predict
+    labels = cluster_kmeans(Xr_s, n_clusters=kmeans_n)
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\pipeline.py", line 96, in cluster_kmeans
+    labels = km.fit_predict(Xr)
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\cluster\_kmeans.py", line 1064, in fit_predict
+    return self.fit(X, sample_weight=sample_weight).labels_
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\cluster\_kmeans.py", line 1464, in fit
+    self._check_params_vs_input(X)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\cluster\_kmeans.py", line 1404, in _check_params_vs_input
+    super()._check_params_vs_input(X, default_n_init=10)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\cluster\_kmeans.py", line 871, in _check_params_vs_input
+    raise ValueError(
+        f"n_samples={X.shape[0]} should be >= n_clusters={self.n_clusters}."
+    )
+ValueError: n_samples=2 should be >= n_clusters=10.
+2025-09-21 22:12:42,075 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:12:42,507 [INFO] Started prediction job predict_d4fb5772-4c82-473e-a654-1e45ddb4e647 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:12:42,601 [INFO] Calling pipeline.cluster_and_predict for run predict_d4fb5772-4c82-473e-a654-1e45ddb4e647
+2025-09-21 22:12:43,020 [ERROR] Job predict_d4fb5772-4c82-473e-a654-1e45ddb4e647 failed: n_samples=9 should be >= n_clusters=10.
+Traceback (most recent call last):
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\main.py", line 121, in job_runner
+    yield
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\main.py", line 265, in run_prediction_task
+    results = func(
+        raw_fasta=fasta_path,
+    ...<8 lines>...
+        threshold=params.get("threshold", 0.7),
+    )
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\pipeline.py", line 210, in cluster_and_predict
+    labels = cluster_kmeans(Xr_s, n_clusters=kmeans_n)
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\backend\pipeline.py", line 96, in cluster_kmeans
+    labels = km.fit_predict(Xr)
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\cluster\_kmeans.py", line 1064, in fit_predict
+    return self.fit(X, sample_weight=sample_weight).labels_
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\cluster\_kmeans.py", line 1464, in fit
+    self._check_params_vs_input(X)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\cluster\_kmeans.py", line 1404, in _check_params_vs_input
+    super()._check_params_vs_input(X, default_n_init=10)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\Documents\Oceanography-backend\Neural-Network\.venv\Lib\site-packages\sklearn\cluster\_kmeans.py", line 871, in _check_params_vs_input
+    raise ValueError(
+        f"n_samples={X.shape[0]} should be >= n_clusters={self.n_clusters}."
+    )
+ValueError: n_samples=9 should be >= n_clusters=10.
+2025-09-21 22:25:55,000 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:25:55,125 [INFO] Started prediction job predict_842ef884-cd59-4fdd-bbc8-745061a39ed4 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:25:55,190 [INFO] Calling pipeline.cluster_and_predict for run predict_842ef884-cd59-4fdd-bbc8-745061a39ed4
+2025-09-21 22:26:22,654 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:26:22,697 [INFO] Started prediction job predict_30c1a742-391b-4f28-aaec-397732496382 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:26:22,776 [INFO] Calling pipeline.cluster_and_predict for run predict_30c1a742-391b-4f28-aaec-397732496382
+2025-09-21 22:26:44,940 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:26:45,305 [INFO] Started prediction job predict_1a9f2090-9793-41bb-93df-79bb5b6208f2 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:26:45,441 [INFO] Calling pipeline.cluster_and_predict for run predict_1a9f2090-9793-41bb-93df-79bb5b6208f2
+2025-09-21 22:31:16,412 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:31:16,443 [INFO] Started prediction job predict_3d96f873-08c6-4501-b971-5088b9ffecfa (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:31:16,469 [INFO] Calling pipeline.cluster_and_predict for run predict_3d96f873-08c6-4501-b971-5088b9ffecfa
+2025-09-21 22:31:28,126 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:31:28,491 [INFO] Started prediction job predict_e526915c-0ae4-4592-a9bb-45e074a672a5 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:31:28,565 [INFO] Calling pipeline.cluster_and_predict for run predict_e526915c-0ae4-4592-a9bb-45e074a672a5
+2025-09-21 22:31:43,041 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:31:43,057 [INFO] Started prediction job predict_1e87d82b-8781-4976-84c5-a0e5cae161e6 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:31:43,094 [INFO] Calling pipeline.cluster_and_predict for run predict_1e87d82b-8781-4976-84c5-a0e5cae161e6
+2025-09-21 22:40:45,913 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:40:45,944 [INFO] Started prediction job predict_f5055dc0-d85a-4a4e-9a16-6e8b6b002348 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:40:45,979 [INFO] Calling pipeline.cluster_and_predict for run predict_f5055dc0-d85a-4a4e-9a16-6e8b6b002348
+2025-09-21 22:41:08,911 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:41:09,102 [INFO] Started prediction job predict_7dc571f7-6dbf-4bbb-a53b-815d50409f24 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:41:09,265 [INFO] Calling pipeline.cluster_and_predict for run predict_7dc571f7-6dbf-4bbb-a53b-815d50409f24
+2025-09-21 22:41:21,966 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:41:22,013 [INFO] Started prediction job predict_2cab4cda-0a97-42f4-9ce9-8f0e350deca6 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:41:22,072 [INFO] Calling pipeline.cluster_and_predict for run predict_2cab4cda-0a97-42f4-9ce9-8f0e350deca6
+2025-09-21 22:41:34,269 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:41:34,625 [INFO] Started prediction job predict_c6d81399-2573-4c85-aa2c-af7d53e8ab47 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:41:34,676 [INFO] Calling pipeline.cluster_and_predict for run predict_c6d81399-2573-4c85-aa2c-af7d53e8ab47
+2025-09-21 22:41:45,061 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:41:45,256 [INFO] Started prediction job predict_4d92910e-2f1f-46c1-b1f2-3c26adb44ab8 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:41:45,305 [INFO] Calling pipeline.cluster_and_predict for run predict_4d92910e-2f1f-46c1-b1f2-3c26adb44ab8
+2025-09-21 22:42:08,639 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:42:09,087 [INFO] Started prediction job predict_7c5cf1f4-658d-4d8a-9b57-5e69e0d1f8cf (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:42:09,127 [INFO] Calling pipeline.cluster_and_predict for run predict_7c5cf1f4-658d-4d8a-9b57-5e69e0d1f8cf
+2025-09-21 22:42:26,124 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:42:26,152 [INFO] Started prediction job predict_d946db55-ad0b-4b76-9380-a0991021f4c7 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:42:26,186 [INFO] Calling pipeline.cluster_and_predict for run predict_d946db55-ad0b-4b76-9380-a0991021f4c7
+2025-09-21 22:49:38,892 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:49:38,926 [INFO] Started prediction job predict_3c2977e7-5fe2-4ffc-9490-eda290bea58c (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:49:38,929 [INFO] Calling pipeline.cluster_and_predict for run predict_3c2977e7-5fe2-4ffc-9490-eda290bea58c
+2025-09-21 22:50:00,335 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:50:00,696 [INFO] Started prediction job predict_62af01ad-22fb-434f-9a31-2425fb7eef72 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:50:00,702 [INFO] Calling pipeline.cluster_and_predict for run predict_62af01ad-22fb-434f-9a31-2425fb7eef72
+2025-09-21 22:53:02,351 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:53:02,384 [INFO] Started prediction job predict_0001fd89-6b39-4686-a9df-de2cd907ce34 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:53:02,387 [INFO] Calling pipeline.cluster_and_predict for run predict_0001fd89-6b39-4686-a9df-de2cd907ce34
+2025-09-21 22:55:41,009 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:55:41,022 [INFO] Started prediction job predict_f0243a13-49de-462a-b487-a34d74eeed9a (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:55:41,026 [INFO] Calling pipeline.cluster_and_predict for run predict_f0243a13-49de-462a-b487-a34d74eeed9a
+2025-09-21 22:57:05,040 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 22:57:05,135 [INFO] Started prediction job predict_003f35d0-a600-41f2-9809-125a59b603aa (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 22:57:05,142 [INFO] Calling pipeline.cluster_and_predict for run predict_003f35d0-a600-41f2-9809-125a59b603aa
+2025-09-21 23:01:53,641 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:01:53,715 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:04:25,735 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 23:04:28,354 [INFO] Started prediction job predict_653e1857-3ef8-4702-b6a2-2643e3d2da90 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 23:04:28,359 [INFO] Calling pipeline.cluster_and_predict for run predict_653e1857-3ef8-4702-b6a2-2643e3d2da90
+2025-09-21 23:05:00,908 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:05:00,910 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:05:39,560 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 23:05:39,711 [INFO] Started prediction job predict_b6a8218d-da67-4bf3-b49f-4c4b35240c16 (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 23:05:39,717 [INFO] Calling pipeline.cluster_and_predict for run predict_b6a8218d-da67-4bf3-b49f-4c4b35240c16
+2025-09-21 23:09:05,090 [INFO] Placeholder model_run_id received; defaulting to latest complete model train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164
+2025-09-21 23:09:05,106 [INFO] Started prediction job predict_03c30c94-7095-459d-b915-391430d31beb (model: train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164)
+2025-09-21 23:09:05,110 [INFO] Calling pipeline.cluster_and_predict for run predict_03c30c94-7095-459d-b915-391430d31beb
+2025-09-21 23:15:50,003 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:15:50,005 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:20:22,701 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:20:22,729 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:21:21,217 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:21:21,218 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:22:29,776 [INFO] Calling pipeline.cluster_and_predict for run predict_dbb5f6e6-3405-4a12-bb79-50181b6d29f3
+2025-09-21 23:23:08,113 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:23:16,117 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:24:04,673 [INFO] Application shutdown requested — attempting to shutdown background executor.
+2025-09-21 23:25:07,340 [INFO] Calling pipeline.cluster_and_predict for run predict_16407355-a2d9-4e5f-aa36-6f5a91daeda4
+2025-09-21 23:25:21,896 [INFO] Calling pipeline.cluster_and_predict for run predict_0cf94abe-fe0b-4161-9113-e92283e2d4ca

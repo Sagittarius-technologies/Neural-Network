@@ -1,0 +1,401 @@
+{
+    "status": "completed",
+    "medoid_predictions": [
+        {
+            "cluster": 0,
+            "medoid_index": 20,
+            "medoid_id": "KC429331.1",
+            "predicted_species": "Unknown",
+            "confidence": 0.0,
+            "top3": [
+                {
+                    "label": "Crassostrea_gigas",
+                    "prob": 0.7706594467163086
+                },
+                {
+                    "label": "Mytilus_edulis",
+                    "prob": 0.08134865760803223
+                },
+                {
+                    "label": "Salmo_salar",
+                    "prob": 0.06841488182544708
+                }
+            ]
+        },
+        {
+            "cluster": 1,
+            "medoid_index": 1,
+            "medoid_id": "XR_006759914.1",
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236,
+            "top3": [
+                {
+                    "label": "Salmo_salar",
+                    "prob": 0.9990476965904236
+                },
+                {
+                    "label": "Delphinus_delphis",
+                    "prob": 0.0002985792816616595
+                },
+                {
+                    "label": "Mytilus_edulis",
+                    "prob": 0.00016306211182381958
+                }
+            ]
+        },
+        {
+            "cluster": 2,
+            "medoid_index": 17,
+            "medoid_id": "EF035090.1",
+            "predicted_species": "Unknown",
+            "confidence": 0.0,
+            "top3": [
+                {
+                    "label": "Mytilus_edulis",
+                    "prob": 0.9998151659965515
+                },
+                {
+                    "label": "Delphinus_delphis",
+                    "prob": 7.05851343809627e-05
+                },
+                {
+                    "label": "Crassostrea_gigas",
+                    "prob": 4.603877096087672e-05
+                }
+            ]
+        },
+        {
+            "cluster": 3,
+            "medoid_index": 21,
+            "medoid_id": "DQ640512.1",
+            "predicted_species": "Mytilus_edulis",
+            "confidence": 0.9996925592422485,
+            "top3": [
+                {
+                    "label": "Mytilus_edulis",
+                    "prob": 0.9996925592422485
+                },
+                {
+                    "label": "Salmo_salar",
+                    "prob": 0.00016912378487177193
+                },
+                {
+                    "label": "Crassostrea_gigas",
+                    "prob": 7.359139272011817e-05
+                }
+            ]
+        },
+        {
+            "cluster": 4,
+            "medoid_index": 12,
+            "medoid_id": "FJ710886.1",
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9998617172241211,
+            "top3": [
+                {
+                    "label": "Salmo_salar",
+                    "prob": 0.9998617172241211
+                },
+                {
+                    "label": "Delphinus_delphis",
+                    "prob": 5.122704533278011e-05
+                },
+                {
+                    "label": "Asterias_rubens",
+                    "prob": 1.6951404177234508e-05
+                }
+            ]
+        },
+        {
+            "cluster": 5,
+            "medoid_index": 10,
+            "medoid_id": "HQ260441.1",
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9994398951530457,
+            "top3": [
+                {
+                    "label": "Salmo_salar",
+                    "prob": 0.9994398951530457
+                },
+                {
+                    "label": "Delphinus_delphis",
+                    "prob": 0.00030814166530035436
+                },
+                {
+                    "label": "Mytilus_edulis",
+                    "prob": 5.868526568519883e-05
+                }
+            ]
+        },
+        {
+            "cluster": 6,
+            "medoid_index": 15,
+            "medoid_id": "L78854.1",
+            "predicted_species": "Mytilus_edulis",
+            "confidence": 0.9991913437843323,
+            "top3": [
+                {
+                    "label": "Mytilus_edulis",
+                    "prob": 0.9991913437843323
+                },
+                {
+                    "label": "Delphinus_delphis",
+                    "prob": 0.0005522520514205098
+                },
+                {
+                    "label": "Salmo_salar",
+                    "prob": 0.00016937899636104703
+                }
+            ]
+        },
+        {
+            "cluster": 7,
+            "medoid_index": 18,
+            "medoid_id": "AY695798.2",
+            "predicted_species": "Mytilus_edulis",
+            "confidence": 0.9996860027313232,
+            "top3": [
+                {
+                    "label": "Mytilus_edulis",
+                    "prob": 0.9996860027313232
+                },
+                {
+                    "label": "Salmo_salar",
+                    "prob": 0.0001873854926088825
+                },
+                {
+                    "label": "Crassostrea_gigas",
+                    "prob": 7.015399751253426e-05
+                }
+            ]
+        },
+        {
+            "cluster": 8,
+            "medoid_index": 19,
+            "medoid_id": "KJ193842.1",
+            "predicted_species": "Mytilus_edulis",
+            "confidence": 0.99953293800354,
+            "top3": [
+                {
+                    "label": "Mytilus_edulis",
+                    "prob": 0.99953293800354
+                },
+                {
+                    "label": "Delphinus_delphis",
+                    "prob": 0.00029346594237722456
+                },
+                {
+                    "label": "Salmo_salar",
+                    "prob": 7.426253432640806e-05
+                }
+            ]
+        },
+        {
+            "cluster": 9,
+            "medoid_index": 16,
+            "medoid_id": "EF035091.1",
+            "predicted_species": "Unknown",
+            "confidence": 0.0,
+            "top3": [
+                {
+                    "label": "Crassostrea_gigas",
+                    "prob": 0.9486886858940125
+                },
+                {
+                    "label": "Salmo_salar",
+                    "prob": 0.018447335809469223
+                },
+                {
+                    "label": "Delphinus_delphis",
+                    "prob": 0.009684729389846325
+                }
+            ]
+        }
+    ],
+    "sequence_assignments": [
+        {
+            "sequence_id": "XR_006760234.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "XR_006759914.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "XR_006759579.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "XR_006759069.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "XR_006757478.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "XR_006756869.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "XR_006767668.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "XR_006767581.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "XR_006767580.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "XR_006763448.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "HQ260441.1",
+            "cluster": 5,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9994398951530457
+        },
+        {
+            "sequence_id": "HQ260440.1",
+            "cluster": 5,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9994398951530457
+        },
+        {
+            "sequence_id": "FJ710886.1",
+            "cluster": 4,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9998617172241211
+        },
+        {
+            "sequence_id": "AJ427629.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "L24489.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "L78854.1",
+            "cluster": 6,
+            "predicted_species": "Mytilus_edulis",
+            "confidence": 0.9991913437843323
+        },
+        {
+            "sequence_id": "EF035091.1",
+            "cluster": 9,
+            "predicted_species": "Unknown",
+            "confidence": 0.0
+        },
+        {
+            "sequence_id": "EF035090.1",
+            "cluster": 2,
+            "predicted_species": "Unknown",
+            "confidence": 0.0
+        },
+        {
+            "sequence_id": "AY695798.2",
+            "cluster": 7,
+            "predicted_species": "Mytilus_edulis",
+            "confidence": 0.9996860027313232
+        },
+        {
+            "sequence_id": "KJ193842.1",
+            "cluster": 8,
+            "predicted_species": "Mytilus_edulis",
+            "confidence": 0.99953293800354
+        },
+        {
+            "sequence_id": "KC429331.1",
+            "cluster": 0,
+            "predicted_species": "Unknown",
+            "confidence": 0.0
+        },
+        {
+            "sequence_id": "DQ640512.1",
+            "cluster": 3,
+            "predicted_species": "Mytilus_edulis",
+            "confidence": 0.9996925592422485
+        },
+        {
+            "sequence_id": "DQ640511.1",
+            "cluster": 3,
+            "predicted_species": "Mytilus_edulis",
+            "confidence": 0.9996925592422485
+        },
+        {
+            "sequence_id": "AY527062.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "XR_009517937.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "XR_009518183.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        },
+        {
+            "sequence_id": "XR_009518176.1",
+            "cluster": 1,
+            "predicted_species": "Salmo_salar",
+            "confidence": 0.9990476965904236
+        }
+    ],
+    "report": {
+        "total_sequences": 27,
+        "clusters_found": 10,
+        "unclustered_sequences": 0,
+        "composition": [
+            {
+                "predicted_species": "Salmo_salar",
+                "n_reads": 19,
+                "percentage": 70.37
+            },
+            {
+                "predicted_species": "Mytilus_edulis",
+                "n_reads": 5,
+                "percentage": 18.52
+            },
+            {
+                "predicted_species": "Unknown",
+                "n_reads": 3,
+                "percentage": 11.11
+            }
+        ]
+    }
+}

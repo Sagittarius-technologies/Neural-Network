@@ -1,0 +1,19 @@
+{
+    "run_id": "predict_dbb5f6e6-3405-4a12-bb79-50181b6d29f3",
+    "status": "completed",
+    "start_time": "2025-09-21T17:52:29.774613Z",
+    "end_time": "2025-09-21T17:52:35.458702Z",
+    "error": "",
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "cluster_method": "kmeans",
+        "kmeans_n": 2,
+        "threshold": 0.7,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "filename": "Antarctic_Krill.fasta"
+    },
+    "job_type": "prediction",
+    "model_run_id": "train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164"
+}

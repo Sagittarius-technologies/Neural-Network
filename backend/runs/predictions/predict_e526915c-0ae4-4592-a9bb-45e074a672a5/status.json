@@ -1,0 +1,19 @@
+{
+    "run_id": "predict_e526915c-0ae4-4592-a9bb-45e074a672a5",
+    "status": "completed",
+    "start_time": "2025-09-21T17:01:28.563725Z",
+    "end_time": "2025-09-21T17:01:32.017598Z",
+    "error": "",
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "cluster_method": "kmeans",
+        "kmeans_n": 5,
+        "threshold": 0.7,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "filename": "Common_Starfish.fasta"
+    },
+    "job_type": "prediction",
+    "model_run_id": "train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164"
+}

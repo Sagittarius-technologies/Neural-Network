@@ -1,0 +1,3 @@
+cluster,medoid_index,medoid_id,predicted_species,confidence,top3
+0,0,KJ193800.1,Unknown,0.0,"[{""label"": ""Oncorhynchus_mykiss"", ""prob"": 0.9999756813049316}, {""label"": ""Crassostrea_gigas"", ""prob"": 2.432890141790267e-05}, {""label"": ""Thunnus_albacares"", ""prob"": 3.660474354183485e-11}]"
+1,1,DQ079743.1,Unknown,0.0,"[{""label"": ""Crassostrea_gigas"", ""prob"": 0.8520767688751221}, {""label"": ""Oncorhynchus_mykiss"", ""prob"": 0.12043814361095428}, {""label"": ""Thunnus_albacares"", ""prob"": 0.012760289013385773}]"

@@ -1,0 +1,33 @@
+{
+    "run_id": "predict_34a6c00b_1758520857",
+    "status": "completed",
+    "start_time": 1758520857.9313776,
+    "end_time": 1758520864.0112302,
+    "error": null,
+    "parameters": {
+        "cluster_method": "kmeans",
+        "kmeans_n": 2,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "threshold": 0.7,
+        "model_run_id": "train_d6d0ab14_1758514958",
+        "filename": "Antarctic_Krill.fasta"
+    },
+    "job_type": "prediction",
+    "outputs": [
+        "Antarctic_Krill.fasta",
+        "cluster_medoid_predictions.csv",
+        "cluster_scatter.png",
+        "sequence_cluster_assignments.csv",
+        "species_abundance_bar.png",
+        "species_abundance_by_clusters.csv",
+        "species_abundance_by_reads.csv",
+        "species_composition_pie.png",
+        "status.json"
+    ],
+    "results_info": {
+        "total_sequences": 2,
+        "num_clusters": 2,
+        "medoids_found": 2
+    }
+}

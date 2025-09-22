@@ -1,0 +1,15 @@
+{
+    "run_id": "train_1c171fff-c318-43b7-9667-42eb540cb9a4",
+    "status": "failed",
+    "start_time": "2025-09-21T15:30:28.603157Z",
+    "end_time": "2025-09-21T15:30:29.063036Z",
+    "error": "ValueError: With n_samples=0, test_size=0.2 and train_size=None, the resulting train set will be empty. Adjust any of the aforementioned parameters.",
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "epochs": 50,
+        "centroid_percentile": 95.0,
+        "filename": "Atlantic Salmon.fasta"
+    },
+    "job_type": "training"
+}

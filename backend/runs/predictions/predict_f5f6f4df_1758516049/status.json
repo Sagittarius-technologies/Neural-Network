@@ -1,0 +1,22 @@
+{
+    "run_id": "predict_f5f6f4df_1758516049",
+    "status": "completed",
+    "start_time": 1758516050.0061622,
+    "end_time": 1758516054.8838143,
+    "error": null,
+    "parameters": {
+        "cluster_method": "kmeans",
+        "kmeans_n": 10,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "threshold": 0.7,
+        "model_run_id": "train_d6d0ab14_1758514958",
+        "filename": "mixed_raw.fasta"
+    },
+    "job_type": "prediction",
+    "results_info": {
+        "total_sequences": 27,
+        "num_clusters": 10,
+        "medoids_found": 10
+    }
+}

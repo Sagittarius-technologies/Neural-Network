@@ -1,0 +1,19 @@
+{
+    "run_id": "predict_c6d81399-2573-4c85-aa2c-af7d53e8ab47",
+    "status": "completed",
+    "start_time": "2025-09-21T17:11:34.674399Z",
+    "end_time": "2025-09-21T17:11:38.030121Z",
+    "error": "",
+    "parameters": {
+        "k": 4,
+        "pca_comp": 50,
+        "cluster_method": "kmeans",
+        "kmeans_n": 9,
+        "threshold": 0.7,
+        "dbscan_eps": 0.5,
+        "dbscan_min": 5,
+        "filename": "Bacillus subtilis.fasta"
+    },
+    "job_type": "prediction",
+    "model_run_id": "train_c14fe6fb-327d-42ad-a7e7-5aec3b53d164"
+}
