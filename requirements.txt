@@ -4,7 +4,6 @@ python-multipart==0.0.6
 aiofiles==23.1.0
 gunicorn==21.2.0
 
-# Data & ML stack (pin to versions with manylinux wheels for py3.11)
 numpy==1.26.4
 pandas==2.2.2
 scikit-learn==1.5.0
