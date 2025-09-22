@@ -37,20 +37,22 @@ PREDICTIONS_DIR.mkdir(parents=True, exist_ok=True)
 app = FastAPI(title="eDNA NN API", version="1.0.0")
 
 # --- CORS Middleware ---
-# Provide ALLOWED_ORIGINS as comma-separated env var, e.g:
-# ALLOWED_ORIGINS="http://localhost:5173,https://your-frontend.example.com"
-raw_allowed = os.environ.get("ALLOWED_ORIGINS", "http://localhost:5173,https://neural-network-2.onrender.com")
-# split and strip
-allowed_origins = [o.strip() for o in raw_allowed.split(",") if o.strip()]
+# Replace "*" with explicit origins (frontend dev + deployed frontend)
+ALLOWED_ORIGINS = [
+    "http://localhost:5173",              # dev front-end origin
+    "http://localhost:3000",              # optional (if you use CRA)
+    "https://your-frontend-domain.com",   # replace with your deployed frontend domain if any
+    "https://neural-network-3.onrender.com" # optional if you host frontend here (otherwise remove)
+]
 
-# NOTE: do NOT set allow_origins=["*"] when allow_credentials=True and the frontend uses credentials.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins,  # explicit list
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # --- Helper Functions ---
 def save_uploaded_file(upload_file: UploadFile, destination: Path):
