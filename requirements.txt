@@ -8,3 +8,4 @@ matplotlib
 seaborn
 fastapi
 uvicorn[standard]
+python-multipart
