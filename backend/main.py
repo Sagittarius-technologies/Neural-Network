@@ -1,13 +1,6 @@
 #!/usr/bin/env python3
 """
 main.py - FastAPI server for eDNA NN API
-Includes endpoints to:
- - train (POST /train)
- - predict (POST /predict)
- - check run status (GET /runs/{run_id})
- - download run files (GET /runs/{run_id}/download)
- - serve individual files from runs (GET /runs/{run_id}/file/{filename})
- - medoid endpoints (GET /runs/{run_id}/medoid and /medoid/json)
 """
 import sys
 import os
@@ -44,9 +37,16 @@ PREDICTIONS_DIR.mkdir(parents=True, exist_ok=True)
 app = FastAPI(title="eDNA NN API", version="1.0.0")
 
 # --- CORS Middleware ---
+# Provide ALLOWED_ORIGINS as comma-separated env var, e.g:
+# ALLOWED_ORIGINS="http://localhost:5173,https://your-frontend.example.com"
+raw_allowed = os.environ.get("ALLOWED_ORIGINS", "http://localhost:5173,https://neural-network-2.onrender.com")
+# split and strip
+allowed_origins = [o.strip() for o in raw_allowed.split(",") if o.strip()]
+
+# NOTE: do NOT set allow_origins=["*"] when allow_credentials=True and the frontend uses credentials.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # during development; restrict in production
+    allow_origins=allowed_origins,  # explicit list
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -134,11 +134,6 @@ def pick_latest_completed_model() -> str:
 
 # --- Background Task Logic ---
 def _collect_prediction_outputs(prediction_dir: Path, run_id: str):
-    """
-    Ensure expected files land in prediction_dir. Move any outputs written to cwd,
-    and also fallback-move any png/csv containing common keywords.
-    Returns list of file names found in prediction_dir after collection.
-    """
     expected_outputs = [
         "cluster_medoid_predictions.csv",
         "sequence_cluster_assignments.csv",
@@ -148,7 +143,6 @@ def _collect_prediction_outputs(prediction_dir: Path, run_id: str):
         "species_composition_pie.png"
     ]
 
-    # Move exact-named files in cwd into prediction_dir
     for fname in expected_outputs:
         src = Path.cwd() / fname
         dest = prediction_dir / fname
@@ -159,7 +153,6 @@ def _collect_prediction_outputs(prediction_dir: Path, run_id: str):
             except Exception as e:
                 print(f"[{run_id}] Could not move {src} -> {dest}: {e}")
 
-    # Fallback: look for png/csv in cwd that contain keywords and move them
     keywords = ["scatter", "abundance", "composition", "medoid", "cluster"]
     for ext in ("*.png", "*.csv"):
         for p in Path.cwd().glob(ext):
@@ -173,7 +166,6 @@ def _collect_prediction_outputs(prediction_dir: Path, run_id: str):
                     except Exception as e:
                         print(f"[{run_id}] Fallback move failed for {p}: {e}")
 
-    # Finally list files present
     files_here = []
     try:
         files_here = [p.name for p in prediction_dir.iterdir() if p.is_file()]
@@ -182,7 +174,6 @@ def _collect_prediction_outputs(prediction_dir: Path, run_id: str):
     return files_here
 
 def run_training_task(run_id: str, fasta_path_str: str, params: Dict[str, Any]):
-    """Background task for model training."""
     model_dir = MODELS_DIR / run_id
     fasta_path = Path(fasta_path_str)
 
@@ -229,7 +220,6 @@ def run_training_task(run_id: str, fasta_path_str: str, params: Dict[str, Any]):
 
     finally:
         status_data["end_time"] = time.time()
-        # collect current files for debugging (training dir)
         try:
             status_data["outputs"] = [p.name for p in model_dir.iterdir() if p.is_file()]
         except Exception:
@@ -243,7 +233,6 @@ def run_training_task(run_id: str, fasta_path_str: str, params: Dict[str, Any]):
             pass
 
 def run_prediction_task(run_id: str, model_run_id: str, fasta_path_str: str, params: Dict[str, Any]):
-    """Background task for prediction."""
     prediction_dir = PREDICTIONS_DIR / run_id
     model_dir = MODELS_DIR / model_run_id if model_run_id else None
     fasta_path = Path(fasta_path_str)
@@ -273,7 +262,6 @@ def run_prediction_task(run_id: str, model_run_id: str, fasta_path_str: str, par
         if not validate_model_files(model_dir):
             raise RuntimeError(f"Model directory {model_run_id} is missing required files")
 
-        # Call prediction function (this should write CSVs + PNGs into outdir)
         assign_df, medoid_df, labels = pipeline.cluster_and_predict(
             raw_fasta=str(fasta_path),
             model_dir=str(model_dir),
@@ -287,13 +275,9 @@ def run_prediction_task(run_id: str, model_run_id: str, fasta_path_str: str, par
             threshold=float(params.get("threshold", 0.7))
         )
 
-        # collect outputs (try moving any that landed in cwd, plus fallback keyword moves)
         files_here = _collect_prediction_outputs(prediction_dir, run_id)
-
-        # record found outputs in status_data for frontend debugging
         status_data["outputs"] = files_here
 
-        # warn if some expected outputs missing (log only)
         expected = [
             "cluster_medoid_predictions.csv",
             "cluster_scatter.png",
@@ -320,7 +304,6 @@ def run_prediction_task(run_id: str, model_run_id: str, fasta_path_str: str, par
 
     finally:
         status_data["end_time"] = time.time()
-        # ensure outputs is present in status_data (best-effort)
         try:
             status_data["outputs"] = status_data.get("outputs") or [p.name for p in prediction_dir.iterdir() if p.is_file()]
         except Exception:
@@ -388,7 +371,6 @@ async def train_model(
         background_tasks.add_task(run_training_task, run_id, str(fasta_path), params)
 
         return {"message": "Training job started successfully", "run_id": run_id, "parameters": params, "status_endpoint": f"/runs/{run_id}"}
-
     except HTTPException:
         raise
     except Exception as e:
@@ -475,7 +457,6 @@ async def predict(
 
 @app.get("/runs/{run_id}")
 def get_run_status(run_id: str, request: Request):
-    """Get status and results of a training or prediction run."""
     try:
         if run_id.startswith("predict"):
             run_dir = PREDICTIONS_DIR / run_id
@@ -494,7 +475,6 @@ def get_run_status(run_id: str, request: Request):
         with status_file.open("r", encoding="utf-8") as f:
             job_details = json.load(f)
 
-        # runtime fields (safely)
         if job_details.get("start_time") and job_details.get("end_time"):
             st = _to_number_maybe(job_details.get("start_time"))
             ed = _to_number_maybe(job_details.get("end_time"))
@@ -507,8 +487,6 @@ def get_run_status(run_id: str, request: Request):
             job_details["current_runtime_seconds"] = (time.time() - st) if st is not None else None
 
         results = {}
-
-        # always include file list found on disk (helpful for debugging)
         try:
             files = [p.name for p in run_dir.iterdir() if p.is_file()]
             results["files"] = files
@@ -534,7 +512,6 @@ def get_run_status(run_id: str, request: Request):
                         except Exception as e:
                             results["medoid_predictions_error"] = f"Could not read medoid CSV: {e}"
 
-                # species abundance by reads (optional)
                 abundance_file = run_dir / "species_abundance_by_reads.csv"
                 if abundance_file.exists():
                     try:
@@ -544,9 +521,7 @@ def get_run_status(run_id: str, request: Request):
                     except Exception:
                         pass
 
-                # visualizations -> absolute URLs (use url_for)
                 visuals = {}
-                # first add any known expected images
                 for img in ["cluster_scatter.png", "species_abundance_bar.png", "species_composition_pie.png"]:
                     p = run_dir / img
                     if p.exists():
@@ -556,7 +531,6 @@ def get_run_status(run_id: str, request: Request):
                             base = str(request.base_url).rstrip("/")
                             visuals[p.name] = f"{base}/runs/{run_id}/file/{quote(p.name, safe='')}"
 
-                # also include any other pngs present
                 for p in run_dir.glob("*.png"):
                     if p.name not in visuals:
                         try:
@@ -579,7 +553,6 @@ def get_run_status(run_id: str, request: Request):
 
 @app.get("/models")
 def get_models():
-    """Get list of completed trained models."""
     try:
         completed_models = []
 
@@ -628,14 +601,13 @@ def get_models():
                 m.pop("end_time_raw", None)
 
         return {"models": completed_models, "total_count": len(completed_models)}
-
     except Exception as e:
         print(f"Models endpoint error: {e}")
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
 @app.get("/runs/{run_id}/file/{filename}")
 def get_run_file(run_id: str, filename: str):
-    safe_name = Path(filename).name  # prevents path traversal
+    safe_name = Path(filename).name
     if run_id.startswith("predict"):
         run_dir = PREDICTIONS_DIR / run_id
     elif run_id.startswith("train"):
@@ -657,13 +629,8 @@ def get_run_file(run_id: str, filename: str):
 
     return FileResponse(str(file_path), media_type=media_type, filename=safe_name)
 
-# --- New medoid endpoints (single-file CSV and JSON) ---
 @app.get("/runs/{run_id}/medoid")
 def get_medoid_csv(run_id: str):
-    """Return cluster_medoid_predictions.csv for a run (as a download).
-    If not on disk, try to find it inside any ZIPs in the run directory,
-    otherwise try to generate it from status.json medoid_predictions.
-    """
     try:
         if run_id.startswith("predict"):
             run_dir = PREDICTIONS_DIR / run_id
@@ -676,11 +643,9 @@ def get_medoid_csv(run_id: str):
             raise HTTPException(status_code=404, detail="Run ID not found")
 
         medoid_path = run_dir / "cluster_medoid_predictions.csv"
-        # 1) If file exists on disk, serve it directly
         if medoid_path.exists():
             return FileResponse(str(medoid_path), media_type="text/csv", filename=medoid_path.name)
 
-        # 2) Look inside any ZIP files in the run directory for the medoid CSV
         for zpath in run_dir.glob("*.zip"):
             try:
                 with zipfile.ZipFile(zpath, "r") as zf:
@@ -694,7 +659,6 @@ def get_medoid_csv(run_id: str):
                 print(f"Could not read zip {zpath}: {e}")
                 continue
 
-        # 3) Otherwise try to build CSV from status.json (medoid_predictions)
         status_file = run_dir / "status.json"
         if not status_file.exists():
             raise HTTPException(status_code=404, detail="No medoid CSV on disk and no status available to generate it")
@@ -710,7 +674,6 @@ def get_medoid_csv(run_id: str):
         if not isinstance(medoid_list, list) or len(medoid_list) == 0:
             raise HTTPException(status_code=404, detail="No medoid predictions available to generate CSV")
 
-        # Build CSV in-memory
         fieldnames = []
         for r in medoid_list:
             if isinstance(r, dict):
@@ -742,12 +705,8 @@ def get_medoid_csv(run_id: str):
         print(f"get_medoid_csv error for {run_id}: {e}")
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
-
 @app.get("/runs/{run_id}/medoid/json")
 def get_medoid_json(run_id: str):
-    """Return medoid predictions as JSON (either parsed from CSV if present or from status.json).
-    If the CSV is only inside a ZIP in the run directory, extract it and parse it.
-    """
     try:
         if run_id.startswith("predict"):
             run_dir = PREDICTIONS_DIR / run_id
@@ -776,14 +735,12 @@ def get_medoid_json(run_id: str):
                 except Exception as e:
                     raise HTTPException(status_code=500, detail=f"Could not parse medoid CSV: {e}")
 
-        # If CSV not on disk, look inside any ZIPs for it
         for zpath in run_dir.glob("*.zip"):
             try:
                 with zipfile.ZipFile(zpath, "r") as zf:
                     for name in zf.namelist():
                         if name.lower().endswith("cluster_medoid_predictions.csv") or ("medoid" in name.lower() and name.lower().endswith(".csv")):
                             raw = zf.read(name)
-                            # Try pandas first
                             try:
                                 import pandas as _pd
                                 df_med = _pd.read_csv(io.BytesIO(raw))
@@ -802,62 +759,6 @@ def get_medoid_json(run_id: str):
                 print(f"Could not read zip {zpath}: {e}")
                 continue
 
-        # fallback to status.json
-        status_file = run_dir / "status.json"
-        if not status_file.exists():
-            raise HTTPException(status_code=404, detail="No medoid file on disk and no status available")
-
-        try:
-            with status_file.open("r", encoding="utf-8") as f:
-                status_data = json.load(f)
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Could not read status file: {e}")
-
-        results_block = status_data.get("results") if isinstance(status_data.get("results"), dict) else {}
-        medoid_list = results_block.get("medoid_predictions") or status_data.get("medoid_predictions")
-        if not isinstance(medoid_list, list):
-            raise HTTPException(status_code=404, detail="No medoid predictions available in status")
-
-        return JSONResponse(content={"medoid_predictions": medoid_list})
-    except HTTPException:
-        raise
-    except Exception as e:
-        print(f"get_medoid_json error for {run_id}: {e}")
-        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
-
-@app.get("/runs/{run_id}/medoid/json")
-def get_medoid_json(run_id: str):
-    """Return medoid predictions as JSON (either parsed from CSV if present or from status.json)."""
-    try:
-        if run_id.startswith("predict"):
-            run_dir = PREDICTIONS_DIR / run_id
-        elif run_id.startswith("train"):
-            run_dir = MODELS_DIR / run_id
-        else:
-            raise HTTPException(status_code=400, detail="Invalid run_id format")
-
-        if not run_dir.exists():
-            raise HTTPException(status_code=404, detail="Run ID not found")
-
-        medoid_path = run_dir / "cluster_medoid_predictions.csv"
-        if medoid_path.exists():
-            # Try pandas first for robustness, fallback to csv.DictReader
-            try:
-                import pandas as _pd
-                df_med = _pd.read_csv(medoid_path)
-                return JSONResponse(content={"medoid_predictions": df_med.to_dict(orient="records")})
-            except Exception:
-                try:
-                    rows = []
-                    with medoid_path.open("r", newline="", encoding="utf-8") as f:
-                        reader = _csv.DictReader(f)
-                        for r in reader:
-                            rows.append(r)
-                    return JSONResponse(content={"medoid_predictions": rows})
-                except Exception as e:
-                    raise HTTPException(status_code=500, detail=f"Could not parse medoid CSV: {e}")
-
-        # fallback to status.json
         status_file = run_dir / "status.json"
         if not status_file.exists():
             raise HTTPException(status_code=404, detail="No medoid file on disk and no status available")
@@ -902,12 +803,10 @@ def download_run_files(run_id: str):
         else:
             status_data = {}
 
-        # Prepare an in-memory ZIP
         mem_zip = io.BytesIO()
         with zipfile.ZipFile(mem_zip, mode="w", compression=zipfile.ZIP_DEFLATED, compresslevel=6) as zf:
             added_any = False
 
-            # 1) Prefer on-disk medoid CSV if present, otherwise attempt to generate from status_data.results.medoid_predictions
             medoid_path = run_dir / "cluster_medoid_predictions.csv"
             if medoid_path.exists():
                 try:
@@ -916,12 +815,10 @@ def download_run_files(run_id: str):
                 except Exception as e:
                     print(f"Error adding medoid CSV from disk: {e}")
             else:
-                # status_data might include medoid_predictions if the status file was populated that way
                 results_block = status_data.get("results") if isinstance(status_data.get("results"), dict) else {}
                 medoid_list = results_block.get("medoid_predictions") or status_data.get("medoid_predictions")
                 if isinstance(medoid_list, list) and len(medoid_list) > 0:
                     try:
-                        # create CSV in-memory
                         fieldnames = []
                         for r in medoid_list:
                             if isinstance(r, dict):
@@ -929,13 +826,11 @@ def download_run_files(run_id: str):
                                     if k not in fieldnames:
                                         fieldnames.append(k)
                         if not fieldnames:
-                            # fallback: infer from first row keys as strings
                             fieldnames = list(medoid_list[0].keys())
                         csv_buf = io.StringIO()
                         writer = _csv.DictWriter(csv_buf, fieldnames=fieldnames)
                         writer.writeheader()
                         for row in medoid_list:
-                            # ensure values are primitive or JSON-serialized strings
                             normalized = {k: (json.dumps(v) if not isinstance(v, (str, int, float, bool, type(None))) else ("" if v is None else v)) for k, v in (row.items() if isinstance(row, dict) else [])}
                             writer.writerow(normalized)
                         zf.writestr("cluster_medoid_predictions.csv", csv_buf.getvalue())
@@ -943,7 +838,6 @@ def download_run_files(run_id: str):
                     except Exception as e:
                         print(f"Could not generate medoid CSV from status data: {e}")
 
-            # 2) Add other expected CSVs if present (species abundance, assignments)
             for csv_name in ["species_abundance_by_reads.csv", "sequence_cluster_assignments.csv"]:
                 p = run_dir / csv_name
                 if p.exists():
@@ -953,7 +847,6 @@ def download_run_files(run_id: str):
                     except Exception as e:
                         print(f"Error adding {csv_name}: {e}")
 
-            # 3) Add any PNG/JPG images found (visualizations)
             image_patterns = ["*.png", "*.jpg", "*.jpeg"]
             for pat in image_patterns:
                 for p in run_dir.glob(pat):
@@ -963,27 +856,22 @@ def download_run_files(run_id: str):
                     except Exception as e:
                         print(f"Error adding image {p.name}: {e}")
 
-            # 4) Add status.json for debugging (but sanitize to avoid leaking large tracebacks if you prefer)
             if status_file.exists():
                 try:
-                    # Optionally, you can redact the 'traceback' field if present:
+                    with status_file.open("r", encoding="utf-8") as f:
+                        stat = json.load(f)
+                    copy_stat = dict(stat)
+                    if "traceback" in copy_stat:
+                        copy_stat["traceback"] = "<traceback omitted in zip>"
+                    zf.writestr("status.json", json.dumps(copy_stat, indent=2))
+                    added_any = True
+                except Exception:
                     try:
-                        with status_file.open("r", encoding="utf-8") as f:
-                            stat = json.load(f)
-                        # Keep a shallow copy and remove large fields
-                        copy_stat = dict(stat)
-                        if "traceback" in copy_stat:
-                            copy_stat["traceback"] = "<traceback omitted in zip>"
-                        zf.writestr("status.json", json.dumps(copy_stat, indent=2))
-                        added_any = True
-                    except Exception:
-                        # fallback to adding raw file
                         zf.write(status_file, "status.json")
                         added_any = True
-                except Exception as e:
-                    print(f"Error adding status.json: {e}")
+                    except Exception as e:
+                        print(f"Error adding status.json: {e}")
 
-            # 5) Create a small human-friendly summary CSV with key fields
             try:
                 summary_rows = []
                 job_type = status_data.get("job_type") or ("prediction" if run_id.startswith("predict") else "train")
@@ -996,14 +884,12 @@ def download_run_files(run_id: str):
                     "start_time": status_data.get("start_time"),
                     "end_time": status_data.get("end_time")
                 }
-                # attach results_info if present
                 results_info = status_data.get("results_info") or {}
                 summary.update({
                     "total_sequences": results_info.get("total_sequences") if results_info else "",
                     "num_clusters": results_info.get("num_clusters") if results_info else "",
                     "medoids_found": results_info.get("medoids_found") if results_info else ""
                 })
-                # runtime calculation
                 try:
                     st = _to_number_maybe(status_data.get("start_time"))
                     ed = _to_number_maybe(status_data.get("end_time"))
@@ -1012,7 +898,6 @@ def download_run_files(run_id: str):
                     summary["runtime_seconds"] = ""
                 summary_rows.append(summary)
 
-                # write summary CSV
                 if summary_rows:
                     fieldnames = list(summary_rows[0].keys())
                     buf = io.StringIO()
@@ -1025,7 +910,6 @@ def download_run_files(run_id: str):
             except Exception as e:
                 print(f"Could not write summary.csv: {e}")
 
-            # 6) Add a human README describing the contents
             try:
                 readme_lines = [
                     "Results ZIP for run: " + run_id,
@@ -1046,12 +930,10 @@ def download_run_files(run_id: str):
             except Exception as e:
                 print(f"Could not write README.txt: {e}")
 
-            # if nothing was added, return not found
             if not added_any:
                 raise HTTPException(status_code=404, detail="No files found to include in ZIP")
 
         mem_zip.seek(0)
-        # make filename safe; include .zip
         out_filename = f"{run_id}_results.zip"
         return StreamingResponse(
             io.BytesIO(mem_zip.read()),
@@ -1065,7 +947,6 @@ def download_run_files(run_id: str):
         print(f"Download endpoint error: {e}")
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
-
 @app.get("/debug/runs")
 def debug_runs():
     return {
@@ -1077,4 +958,6 @@ def debug_runs():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    host = os.environ.get("HOST", "0.0.0.0")
+    port = int(os.environ.get("PORT", "8000"))
+    uvicorn.run(app, host=host, port=port)
