@@ -36,18 +36,9 @@ PREDICTIONS_DIR.mkdir(parents=True, exist_ok=True)
 
 app = FastAPI(title="eDNA NN API", version="1.0.0")
 
-
-
-# list the exact origins you want to allow (dev + deployed frontends)
-ALLOWED_ORIGINS = [
-    "http://localhost:5173",        # your local frontend while developing
-    "http://127.0.0.1:5173",
-    "https://your-frontend-domain.com"  # replace with your actual deployed frontend origin
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=ALLOWED_ORIGINS,
+    allow_origins=["*"],
     allow_credentials=True,   # set to True if your frontend sends cookies or uses credentials
     allow_methods=["*"],
     allow_headers=["*"],
